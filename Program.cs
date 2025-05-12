@@ -7,9 +7,32 @@ namespace SeriesAnalyzer
     {
         static void Main(string[] args) //Activates functions according to user selection
         {
-            int UserSelection = PrintMenu();
-
+            string GettingNumber()
+            {
+                System.Console.WriteLine("Please enter a series of numbers with a space separating each number.");
+                string UserNumber = Console.ReadLine();
+                return UserNumber;
+            }
             
+            bool NumberChecker(List<int> NumbersList)
+            {
+                bool Flag = true;
+                foreach (var num in NumbersList)
+                {
+                    if (num < 0)
+                    {
+                        Flag = false;
+                    }
+                }
+                return (NumbersList.Count > 3) && Flag;
+            }
+
+            string[] InsertArray(string Numbers)
+            {
+                string[] NumberList = Numbers.Split(" ");
+                return NumberList;
+            }
+
             int PrintMenu()
             {
                 System.Console.WriteLine("Please enter your choice (1-10)\n"+
