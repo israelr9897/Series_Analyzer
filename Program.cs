@@ -84,7 +84,7 @@ namespace SeriesAnalyzer
                 switch(choice)
                 {
                     case "a":
-                    GettingNumber();
+                    UserNumbers = GettingNumber();
                     break;
 
                     case "b":
