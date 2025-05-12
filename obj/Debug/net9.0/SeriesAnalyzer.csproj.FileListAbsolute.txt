@@ -12,3 +12,4 @@
 /Users/admin/c#/SeriesAnalyzer/obj/Debug/net9.0/SeriesAnalyzer.pdb
 /Users/admin/c#/SeriesAnalyzer/obj/Debug/net9.0/SeriesAnalyzer.genruntimeconfig.cache
 /Users/admin/c#/SeriesAnalyzer/obj/Debug/net9.0/ref/SeriesAnalyzer.dll
+/Users/admin/c#/SeriesAnalyzer/obj/Debug/net9.0/SeriesAnalyzer.sourcelink.json
