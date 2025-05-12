@@ -79,6 +79,14 @@ namespace SeriesAnalyzer
                 System.Console.WriteLine(UserNumbers);
             }
 
+            void ReversePrinter(List<int> UserNumberList)
+            {
+                for (int i = UserNumberList.Count -1; i >= 0; i--)
+                {
+                    System.Console.WriteLine(UserNumberList[i] + " ");
+                }
+            }
+
             void ProgramControl(string choice)
             {
                 switch(choice)
@@ -89,6 +97,38 @@ namespace SeriesAnalyzer
 
                     case "b":
                     NumberPrinter();
+                    break;
+
+                    case "c":
+                    ReversePrinter(UserNumberList);
+                    break;
+
+                    // case "d":
+                    // NumberPrinter();
+                    // break;
+
+                    // case "e":
+                    // NumberPrinter();
+                    // break;
+
+                    // case "f":
+                    // NumberPrinter();
+                    // break;
+
+                    // case "g":
+                    // NumberPrinter();
+                    // break;
+
+                    // case "h":
+                    // NumberPrinter();
+                    // break;
+
+                    // case "i":
+                    // NumberPrinter();
+                    // break;
+
+                    case "j":
+                    Exit = true;
                     break;
                 }
             }
