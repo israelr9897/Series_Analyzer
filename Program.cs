@@ -10,8 +10,7 @@ namespace SeriesAnalyzer
         static void Main(string[] args) //Activates functions according to user selection
         {
             bool Exit = false;
-            string UserNumbers = GettingNumber();
-            List<int> UserNumberList = InsertArray(UserNumbers);
+            List<int> UserNumberList = GettingNumber();
             if (NumberChecker(UserNumberList))
             {
                 while (!Exit)
@@ -21,11 +20,10 @@ namespace SeriesAnalyzer
                 }
             }
             
-            string GettingNumber()
+            List<int> GettingNumber()
             {
-                System.Console.WriteLine("Please enter a series of numbers with a space separating each number.");
-                string UserNumber = Console.ReadLine();
-                return UserNumber;
+                System.Console.WriteLine("Please enter a series of numbers with a space separating each number.");                
+                return UserNumberList = InsertArray(Console.ReadLine());;
             }
             
             bool NumberChecker(List<int> NumbersList)
@@ -59,7 +57,7 @@ namespace SeriesAnalyzer
 
             string PrintMenu()
             {
-                System.Console.WriteLine("Please enter your choice (1-10)\n"+
+                System.Console.WriteLine("\nPlease enter your choice (1-10)\n"+
                 "A - Input a Series. (Replace the current series)\n"+
                 "B - Display the series in the order it was entered.\n"+
                 "C - Display the series in the reversed order it was entered.\n"+
@@ -74,17 +72,45 @@ namespace SeriesAnalyzer
                 return choice;
             }
 
-            void NumberPrinter()
+            void NumberPrinter(List<int> UserNumberList)
             {
-                System.Console.WriteLine(UserNumbers);
+                foreach (var num in UserNumberList)
+                {
+                System.Console.Write(num + " ");
+                }
             }
 
             void ReversePrinter(List<int> UserNumberList)
             {
                 for (int i = UserNumberList.Count -1; i >= 0; i--)
                 {
-                    System.Console.WriteLine(UserNumberList[i] + " ");
+                    System.Console.Write(UserNumberList[i] + " ");
                 }
+            }
+
+            // List<int> SortsNumbers(List<int> UserNumbersList)
+            // {
+                                
+            //     return
+            // }
+
+            // void PrintMaxValue(lisst<int> UserNumberList)
+            // {
+            
+            // }
+
+            int FindMinimumValue(List<int> UserNumberList)
+            {
+                int MinValue = UserNumberList[0];
+                foreach (var num in UserNumberList)
+                {
+                    if (MinValue > num)
+                    {
+                        MinValue = num;
+                    }
+                }
+                System.Console.WriteLine("The your minimum value " + MinValue);
+                return MinValue;
             }
 
             void ProgramControl(string choice)
@@ -92,28 +118,28 @@ namespace SeriesAnalyzer
                 switch(choice)
                 {
                     case "a":
-                    UserNumbers = GettingNumber();
+                    GettingNumber();
                     break;
 
                     case "b":
-                    NumberPrinter();
+                    NumberPrinter(UserNumberList);
                     break;
 
                     case "c":
                     ReversePrinter(UserNumberList);
                     break;
 
-                    // case "d":
-                    // NumberPrinter();
-                    // break;
+                    case "d":
+                    SortsNumbers(UserNumberList);
+                    break;
 
                     // case "e":
                     // NumberPrinter();
                     // break;
 
-                    // case "f":
-                    // NumberPrinter();
-                    // break;
+                    case "f":
+                    FindMinimumValue(UserNumberList);
+                    break;
 
                     // case "g":
                     // NumberPrinter();
