@@ -48,6 +48,7 @@ namespace SeriesAnalyzer
                 }
                 return NumberList;
             }
+
             List<int> ArrayBuilder(string Numbers)
             {
                 List<string> StrNumberList = new List<string> (Numbers.Split(" "));
@@ -72,20 +73,27 @@ namespace SeriesAnalyzer
                 return choice;
             }
 
-            void NumberPrinter(List<int> UserNumberList)
+            List<int> NumberPrinter(List<int> UserNumberList)
             {
                 foreach (var num in UserNumberList)
                 {
                 System.Console.Write(num + " ");
                 }
+                return UserNumberList;
             }
 
-            void ReversePrinter(List<int> UserNumberList)
+            List<int> ReversePrinter(List<int> UserNumberList)
             {
+                List<int> ReverseList = new List<int>();
                 for (int i = UserNumberList.Count -1; i >= 0; i--)
                 {
-                    System.Console.Write(UserNumberList[i] + " ");
+                    ReverseList.Add(UserNumberList[i]);
                 }
+                for (int i = 0; i < ReverseList.Count; i++)
+                {
+                    System.Console.Write(ReverseList[i] + " ");
+                }
+                return ReverseList;
             }
 
             List<int> SortsNumbers(List<int> UserNumbersList)
@@ -128,10 +136,19 @@ namespace SeriesAnalyzer
                 return SortList;
             }
 
-            // void PrintMaxValue(lisst<int> UserNumberList)
-            // {
+            int FindMaximumValue(List<int> UserNumberList)
+            {
+                int MaxValue = UserNumberList[0];
+                foreach (var num in UserNumberList)
+                {
+                    if (MaxValue < num)
+                    {
+                        MaxValue = num;
+                    }
+                }
+                return MaxValue;
             
-            // }
+            }
 
             int FindMinimumValue(List<int> UserNumberList)
             {
@@ -143,8 +160,27 @@ namespace SeriesAnalyzer
                         MinValue = num;
                     }
                 }
-                // System.Console.WriteLine("The your minimum value " + MinValue);
                 return MinValue;
+            }
+
+            double AverageCalculator(List<int> UserNumberList)
+            {
+                return SumNumbers(UserNumberList) / UserNumberList.Count;
+            }
+
+            int NumberElements(List<int> UserNumberList)
+            {
+                return UserNumberList.Count;
+            }
+
+            double SumNumbers(List<int> UserNumberList)
+            {
+                double result = 0;
+                foreach (var num in UserNumberList)
+                {
+                    result += num;
+                }
+                return result;
             }
 
             void ProgramControl(string choice)
@@ -167,25 +203,25 @@ namespace SeriesAnalyzer
                     SortsNumbers(UserNumberList);
                     break;
 
-                    // case "e":
-                    // NumberPrinter();
-                    // break;
+                    case "e":
+                    System.Console.WriteLine(FindMaximumValue(UserNumberList));
+                    break;
 
                     case "f":
                     FindMinimumValue(UserNumberList);
                     break;
 
-                    // case "g":
-                    // NumberPrinter();
-                    // break;
+                    case "g":
+                    System.Console.WriteLine(AverageCalculator(UserNumberList));
+                    break;
 
-                    // case "h":
-                    // NumberPrinter();
-                    // break;
+                    case "h":
+                    NumberElements(UserNumberList);
+                    break;
 
-                    // case "i":
-                    // NumberPrinter();
-                    // break;
+                    case "i":
+                    System.Console.WriteLine(SumNumbers(UserNumberList));
+                    break;
 
                     case "j":
                     Exit = true;
