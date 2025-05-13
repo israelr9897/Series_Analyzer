@@ -23,7 +23,7 @@ namespace SeriesAnalyzer
             List<int> GettingNumber()
             {
                 System.Console.WriteLine("Please enter a series of numbers with a space separating each number.");                
-                return UserNumberList = InsertArray(Console.ReadLine());;
+                return UserNumberList = ArrayBuilder(Console.ReadLine());;
             }
             
             bool NumberChecker(List<int> NumbersList)
@@ -39,9 +39,8 @@ namespace SeriesAnalyzer
                 return (NumbersList.Count >= 3) && Flag;
             }
 
-            List<int> InsertArray(string Numbers)
+            List<int> ConvertsListFromStringToInt(List<string> StrNumberList)
             {
-                List<string> StrNumberList = ArrayBuilder(Numbers);
                 List<int> NumberList = new List<int>();
                 foreach (var num in StrNumberList)
                 {
@@ -49,9 +48,10 @@ namespace SeriesAnalyzer
                 }
                 return NumberList;
             }
-            List<string> ArrayBuilder(string Numbers)
+            List<int> ArrayBuilder(string Numbers)
             {
-                List<string> NumberList = new List<string> (Numbers.Split(" "));
+                List<string> StrNumberList = new List<string> (Numbers.Split(" "));
+                List<int> NumberList = (ConvertsListFromStringToInt(StrNumberList));
                 return NumberList; 
             }
 
@@ -88,11 +88,45 @@ namespace SeriesAnalyzer
                 }
             }
 
-            // List<int> SortsNumbers(List<int> UserNumbersList)
-            // {
-                                
-            //     return
-            // }
+            List<int> SortsNumbers(List<int> UserNumbersList)
+            {
+                List<int> SortList = (CreatesNewList(UserNumberList));
+                for (int i = 0; i < UserNumberList.Count-1; i++)
+                {
+                    int MiniIdx = UpdatingList(SortList , i);
+                    SortList = Swep(SortList, MiniIdx, i);
+                }
+                foreach (var item in SortList)
+                {
+                System.Console.Write(item + " ");
+                }                    
+                return SortList;
+            }
+
+            List<int>CreatesNewList(List<int> UserNumberList)
+            {
+                List<int> NewList = new List<int>();
+                foreach (var num in UserNumberList)
+                {
+                     NewList.Add(num);
+                }
+                return NewList;
+            }
+
+            int UpdatingList(List<int> UserNumberList, int i)
+            {
+               List<int> ShortList  = (UserNumberList.GetRange(i, UserNumberList.Count - i));
+               int MiniIdx = ShortList.IndexOf(FindMinimumValue(ShortList));
+               return MiniIdx + i ;
+            }
+
+            List<int> Swep(List<int> SortList,int MiniIdx, int i)
+            {
+                int temp = SortList[MiniIdx];
+                SortList[MiniIdx] = SortList[i];
+                SortList[i] = temp;
+                return SortList;
+            }
 
             // void PrintMaxValue(lisst<int> UserNumberList)
             // {
@@ -109,7 +143,7 @@ namespace SeriesAnalyzer
                         MinValue = num;
                     }
                 }
-                System.Console.WriteLine("The your minimum value " + MinValue);
+                // System.Console.WriteLine("The your minimum value " + MinValue);
                 return MinValue;
             }
 
